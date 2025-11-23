@@ -3,3 +3,8 @@ numpy
 matplotlib
 seaborn
 jupyter
+spacy
+gensim
+pyLDAvis
+vaderSentiment
+notebook
