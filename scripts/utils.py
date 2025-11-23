@@ -31,6 +31,8 @@ class DataPreprocessor:
         """
         data['date'] = pd.to_datetime(data['date'], format="mixed", utc=True)
         print("Converted 'date' dtype:", data['date'].dtype)
+
+        return data
     
 
     def drop_unnamed_column(data):
@@ -38,4 +40,5 @@ class DataPreprocessor:
         Drop 'Unnamed: 0' column.
         """
         data = data.drop(columns=['Unnamed: 0'])
-        return data.head(5)
+        return data
+
