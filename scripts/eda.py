@@ -56,3 +56,4 @@ class EDA:
         data['publication_hour'] = data['date'].dt.hour  # Extract hour from datetime
         publications_by_hour = data.groupby('publication_hour').size()
         return publications_by_hour
+    
