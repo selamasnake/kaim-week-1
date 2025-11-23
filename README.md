@@ -3,10 +3,10 @@
 This project analyzes financial news headlines to gain insights into the structure and sentiment of the articles. And historical stock data, to analyze technical indicators.
 
 Key activities include:
-    * Cleaning and preprocessing the data.
-    * Sentiment Analysis and Topic Modelling.
-    * Calculating Technical Indicators for stocks.
-    * Correlation Analysis
+   * Cleaning and preprocessing the data.
+   * Sentiment Analysis and Topic Modelling.
+   * Calculating Technical Indicators for stocks.
+   * Correlation Analysis
 
 ### File Structure
 The project is organized as follows:
