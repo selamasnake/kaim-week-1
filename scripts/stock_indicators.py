@@ -39,4 +39,14 @@ class IndicatorCalculator:
 
         return data
 
-
+    def calculate_daily_returns(data):
+        """
+        Calculate daily returns (percentage change) for stock prices.
+        """
+        # Calculate daily returns as percentage change
+        data['daily_returns'] = data['close'].pct_change()
+        
+        # Drop rows with NaN values in the returns column
+        data = data.dropna(subset=['daily_returns'])
+        
+        return data

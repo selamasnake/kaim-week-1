@@ -183,3 +183,45 @@ class Plot:
         fig.show()
 
 
+    def plot_daily_returns(data):
+        """
+        Plot daily stock returns along with the stock closing price.
+        Uses seaborn/matplotlib style.
+        """
+
+        ticker = data['stock'].iloc[0]
+        fig, ax1 = plt.subplots(figsize=(12,6))
+
+        # Daily returns
+        ax2 = ax1.twinx()
+        ax2.plot(data.index, data['daily_returns'], color='blue', alpha=0.6, label='Daily Returns')
+        ax2.set_ylabel('Daily Returns', color='black')
+        ax2.tick_params(axis='y', labelcolor='black')
+
+        title = f'{ticker}\'s Daily Returns'
+        plt.title(title)
+        fig.tight_layout()
+        plt.show()
+
+
+    def correlation_heatmap(data, columns):
+        """
+        Plot a correlation heatmap for multiple columns.ple
+        """
+        # Subset the data to only these columns
+        corr_df = data[columns].corr(method='pearson')
+
+        plt.figure(figsize=(6, 5))
+        sns.heatmap(
+            corr_df,
+            cmap="coolwarm",
+            vmin=-1,
+            vmax=1,
+            annot=True,
+            fmt=".2f",
+            square=True,
+            cbar=True,
+        )
+        plt.title(f"Correlation Heatmap: {', '.join(columns)}")
+        plt.tight_layout()
+        plt.show()

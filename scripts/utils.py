@@ -44,6 +44,7 @@ class DataPreprocessor:
         return data
 
 class StockUtils:
+
     """
     Utility functions for working with stock data files.
     """
@@ -74,3 +75,39 @@ class StockUtils:
         data['Date'] = pd.to_datetime(data['Date'], 'coerce')
         data.set_index('Date', inplace=True)
         return data
+    
+    def filter_data_by_stock(data, ticker):
+        """
+        Filter a DataFrame to include only rows for a specific stock.
+        """
+        filtered_data = data[data['stock'] == ticker]
+        return filtered_data
+
+
+    def reset_index(data):
+        """
+        Reset the index of a DataFrame, dropping the old index.
+        """
+        data = data.reset_index(drop=True)
+        return data
+
+    def lowercase_columns(data):
+        """
+        Convert all column names to lowercase.
+        """
+        data.columns = data.columns.str.lower()
+        return data
+    
+    def merge_sentiment_with_stock(headlines_df, stock_df):
+        """
+        Merge headlines with sentiment scores and stock prices on date.
+        """
+        # Ensure 'date' is the index for headlines
+        headlines_indexed = headlines_df.set_index('date')
+        
+        # Join with stock prices
+        combined_data = headlines_indexed.join(stock_df[['Close', 'Volume']])
+
+        return combined_data
+    
+
