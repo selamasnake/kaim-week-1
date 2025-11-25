@@ -44,18 +44,33 @@ class DataPreprocessor:
         return data
 
 class StockUtils:
+    """
+    Utility functions for working with stock data files.
+    """
     def extract_ticker(file_path):
+        """
+        Extracts ticker using filename format: TICKER.csv
+        """
         filename = os.path.basename(file_path)
-        ticker = filename.split('_')[0] 
+
+        # Split filename and remove extension
+        ticker, _ = os.path.splitext(filename) 
         return ticker
 
 
     def load_stock_data(file_path):
-        # ticker = extract_ticker(file_path)
+        """
+        Loads stock data and automatically adds a 'Ticker' column.
+        """
+        ticker = StockUtils.extract_ticker(file_path)
         data = pd.read_csv(file_path)
-        # data.insert(0, 'Ticker', ticker)
+        data.insert(0, 'Ticker', ticker)
         return data
 
     def index_by_date(data):
+        """
+        Converts 'Date' column to datetime index.
+        """
         data['Date'] = pd.to_datetime(data['Date'], 'coerce')
         data.set_index('Date', inplace=True)
+        return data
