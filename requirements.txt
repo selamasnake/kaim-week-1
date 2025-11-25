@@ -10,3 +10,6 @@ vaderSentiment
 notebook
 TA-Lib
 pylance
+yfinance 
+pynance
+plotly

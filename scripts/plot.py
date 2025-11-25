@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import seaborn as sns
+import plotly.express as px
+
+
+plt.style.use("seaborn-v0_8")
+plt.rcParams["figure.figsize"] = (12, 6)
 
 class Plot:
 
@@ -97,5 +102,84 @@ class Plot:
 
         return publication_by_hour
 
+    def plot_stock_price(data):
+        """
+        Plot stock Close price and Volume.
+        """
+
+        # Extract ticker
+        ticker = data['Ticker'].iloc[0]
+
+        # --- Close Price Chart ---
+        plt.figure(figsize=(10,4))
+        plt.plot(data.index, data["Close"], label="Close", color="blue")
+        plt.title(f"{ticker} Stock Close Price")
+        plt.xlabel("Date")
+        plt.ylabel("Price ($)")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+        # --- Volume Chart ---
+        plt.figure(figsize=(10,4))
+        plt.plot(data.index, data["Volume"], label="Volume", color="purple")
+        plt.title(f"{ticker} Daily Trading Volume")
+        plt.xlabel("Date")
+        plt.ylabel("Shares Traded")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+    def plot_stock_mva(data):
+        """
+        Plot stock Close price along with all SMA columns.
+        """
+        ma_columns = [col for col in data.columns if col.startswith('SMA')]
+        fig = px.line(
+            data, 
+            x=data.index, 
+            y=['Close'] + ma_columns,
+            title='Stock Price with Simple Moving Averages',
+            labels={'value': 'Price', 'index': 'Date'}
+        )
+        fig.show()
+
+    def plot_ema(data):
+        """
+        Plot stock Close price along with all EMA columns.
+        """
+        ema_columns = [col for col in data.columns if col.startswith('EMA')]
+        fig = px.line(data, x=data.index, y=['Close'] + ema_columns,
+            title='Stock Price with Exponential Moving Averages',
+            labels={'value': 'Price', 'index': 'Date'}
+        )
+        fig.show()
+
+
+    def plot_rsi(data):
+        """
+        Plot all RSI column. 
+        """
+        fig = px.line(
+            data, 
+            x=data.index, 
+            y=data['RSI_14'],
+            title='Relative Strength Index (RSI)',
+            labels={'value': 'RSI_14', 'index': 'Date'}
+        )
+        fig.show()
+
+
+    # --- Plot MACD ---
+    def plot_macd(data):
+        """
+        Plot all MACD columns dynamically (MACD line, signal, histogram).
+        """
+        macd_columns = [col for col in data.columns if 'MACD' in col]
+        fig = px.line(data, x=data.index, y=macd_columns,
+            title='Moving Average Convergence Divergence (MACD)',
+            labels={'value': 'Value', 'index': 'Date'}
+        )
+        fig.show()
 
 
