@@ -4,7 +4,7 @@ import pynance as data
 
 class IndicatorCalculator:
     """
-    Class for calculating technical indicators and daily returnson stock price data.
+    Class for calculating technical indicators stock price data.
     """
 
     def calculate_technical_indicators(data):

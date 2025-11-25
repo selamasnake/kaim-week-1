@@ -3,7 +3,9 @@ import pandas as pd
 
 class FinancialMetirc:
     def calculate_financial_metric():
-
+        """
+        Calculates and displays portfolio optimization metrics using PyNance.
+        """
         TICKERS = ["AAPL", "AMZN", "MSFT", "META", "NVDA"]
 
         # Create the portfolio calculations object
