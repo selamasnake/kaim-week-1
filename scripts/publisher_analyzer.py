@@ -1,6 +1,6 @@
 import pandas as pd 
 
-class PublsherAnalysis:
+class PublisherAnalysis:
 
     def get_publisher_counts(data, top_n=10):
         """
