@@ -64,7 +64,7 @@ class Plot:
         publications_by_year = (data['date'].dt.to_period('Y').dt.to_timestamp().value_counts().sort_index())
 
         plt.figure(figsize=(14, 6))
-        sns.lineplot(x=publications_by_year.index, y=publications_by_year.values, color='black',marker='o',markersize=6,markerfacecolor='white')
+        sns.lineplot(x=publications_by_year.index, y=publications_by_year.values, color='black',marker='o',markersize=6,markerfacecolor='black')
 
         plt.title('Publications by Year')
         plt.xlabel('Year')
