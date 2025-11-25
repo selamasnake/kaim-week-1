@@ -51,4 +51,4 @@ Make sure a virtual environment is axtivated then,
 
 5. Running Python Scripts
     Navigate to the scripts directory,
-    Run the Python scripts directly `utils.py` ,`eda.py`, `plotpy`, `text.analyzer.py` etc to execute parts of the data cleaning & analysis process.
+    Run the Python scripts directly `utils.py` ,`eda.py`, `plot.py`, `text.analyzer.py` etc to execute parts of the data cleaning & analysis process.
