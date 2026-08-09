@@ -1,4 +1,4 @@
-# insurance-risk-analytics
+# financial-news-price-prediction
 
 This project analyzes financial news headlines to gain insights into the structure and sentiment of the articles. And historical stock data, to analyze technical indicators.
 
